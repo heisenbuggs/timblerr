@@ -1,25 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import {
+  Navigate,
+  Route,
+  Routes,
+} from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
+
+import HomePage from './views/HomePage';
+
+const App = () => {
+  function RequireAuth({ children }: { children: JSX.Element }) {
+    const isLoggedIn =
+      localStorage.getItem("hashtagToken") !== null &&
+      Number(localStorage.getItem("hashtagTokenExpiry")) >=
+        new Date().getTime();
+
+    if (!isLoggedIn) {
+      return <Navigate to="/" replace />;
+    } else {
+      return children;
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />}/>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

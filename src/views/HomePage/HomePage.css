@@ -1,0 +1,21 @@
+.hp43Navbar {
+  background-image: url("../../assets/HomePage-Banner.png");
+
+}
+
+.hp43logo {
+  height: 45px;
+}
+
+.hp43GreenButton {
+  background-color: #04b7a2;
+}
+
+.hp43BlueButton {
+  background-color: #19194a;
+}
+
+.hp43Banner {
+  background-image: url("../../assets/HomePage-Banner.png");
+  height: 80vh;
+}
